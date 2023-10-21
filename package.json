@@ -6,7 +6,9 @@
   "scripts": {
     "hotloader": "webpack serve --config ./webpack.config.js --mode development --port 5050",
     "start": "nodemon --ignore client/",
-    "build": "webpack"
+    "build": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -14,7 +16,7 @@
   },
   "author": "",
   "license": "ISC",
-  "homepage": "",
+  "homepage": "https://zscoder.github.io/",
   "engines": {
     "node": ">=18.x"
   },
@@ -48,7 +50,6 @@
     "css-loader": "^6.7.3",
     "dotenv": "^16.0.3",
     "file-loader": "^6.2.0",
-    "gh-pages": "^6.0.0",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
