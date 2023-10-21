@@ -65,7 +65,7 @@ const Game = (props) => {
         //You lose!
         triggerLose(newjson["lives"]);
       }
-      if (newjson["currentWords"].length == Math.round((props.size * props.size) / 4)) {
+      if (newjson["currentWords"].length == Math.round((props.rows * props.cols) / 4)) {
         //You win!
         triggerWin(newjson["lives"]);
       }
