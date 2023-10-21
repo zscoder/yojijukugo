@@ -8,9 +8,7 @@
     "start": "nodemon --ignore client/",
     "build": "webpack",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+    "deploy": "gh-pages -d client/dist"
   },
   "repository": {
     "type": "git",
