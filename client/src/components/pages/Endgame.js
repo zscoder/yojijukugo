@@ -15,11 +15,16 @@ export const Endgame = (props) => {
 
   return (
     <div>
+      <div>
+        <h2>
+          Size: {props.rows}x{props.cols}, Difficulty: {props.difficulty}
+        </h2>
+      </div>
       <h2>You {props.game.lives > 0 || props.game.lives < -10 ? "win" : "lose"}!</h2>
       <div>
         <h2>
           Found phrases: {props.game.currentWords.length}/
-          {Math.round((props.size * props.size) / 4)}
+          {Math.round((props.rows * props.cols) / 4)}
         </h2>
       </div>
       <div>
@@ -35,7 +40,7 @@ export const Endgame = (props) => {
         <table>
           <thead>
             <tr>
-              <td>Found Phrases</td>
+              <td>Found Phrases:</td>
             </tr>
           </thead>
           <tbody>
@@ -71,7 +76,7 @@ export const Endgame = (props) => {
           })}
         </tbody>
       </table>
-      <button onClick={handleRetry}>もう一回遊びます</button>
+      <button onClick={handleRetry}>もう一回遊ぶ</button>
     </div>
   );
 };

@@ -18,7 +18,8 @@ import { get, post } from "../utilities";
  */
 const App = () => {
   //const [userId, setUserId] = useState(undefined);
-  const [size, setSize] = useState(4);
+  const [rows, setRows] = useState(4);
+  const [cols, setCols] = useState(4);
   const [difficulty, setDifficulty] = useState(1);
   const [lives, setLives] = useState(3);
   const [game, setGame] = useState(null);
@@ -32,11 +33,13 @@ const App = () => {
           index
           element={
             <MainMenu
-              size={size}
+              rows={rows}
+              cols={cols}
               difficulty={difficulty}
               lives={lives}
               game={game}
-              setSize={setSize}
+              setRows={setRows}
+              setCols={setCols}
               setDifficulty={setDifficulty}
               setLives={setLives}
               setGame={setGame}
@@ -47,11 +50,13 @@ const App = () => {
           path="game"
           element={
             <Game
-              size={size}
+              rows={rows}
+              cols={cols}
               difficulty={difficulty}
               lives={lives}
               game={game}
-              setSize={setSize}
+              setRows={setRows}
+              setCols={setCols}
               setDifficulty={setDifficulty}
               setLives={setLives}
               setGame={setGame}
@@ -62,11 +67,13 @@ const App = () => {
           path="result"
           element={
             <Endgame
-              size={size}
+              rows={rows}
+              cols={cols}
               difficulty={difficulty}
               lives={lives}
               game={game}
-              setSize={setSize}
+              setRows={setRows}
+              setCols={setCols}
               setDifficulty={setDifficulty}
               setLives={setLives}
               setGame={setGame}

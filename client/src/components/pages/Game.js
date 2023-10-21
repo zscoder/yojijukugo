@@ -16,6 +16,14 @@ const Game = (props) => {
     newjson["currentList"] = [];
     props.setGame(newjson);
   };
+  const handleGiveUp = () => {
+    let newjson = JSON.parse(JSON.stringify(props.game));
+    newjson["lives"] = 0;
+    newjson["current"] = "";
+    newjson["currentList"] = [];
+    props.setGame(newjson);
+    navigate("/result");
+  };
   const triggerLose = (hp) => {
     navigate("/result");
   };
@@ -43,6 +51,9 @@ const Game = (props) => {
           for (const idx of newjson["currentList"]) {
             newjson["buttonstates"][idx[0]][idx[1]] = 0;
           }
+          if (props.lives >= 0) {
+            newjson["wrongWords"].push(newjson["current"]);
+          }
           newjson["lives"] = props.game["lives"] - 1;
           newjson["current"] = "";
           newjson["currentList"] = [];
@@ -67,11 +78,8 @@ const Game = (props) => {
     <div>
       <div>
         <h2>
-          Size: {props.size}x{props.size}
+          Size: {props.rows}x{props.cols}, Difficulty: {props.difficulty}
         </h2>
-      </div>
-      <div>
-        <h2>Difficulty: {props.difficulty}</h2>
       </div>
       <div>
         {props.lives >= 0 ? (
@@ -107,11 +115,12 @@ const Game = (props) => {
         </tbody>
       </table>
       <div>Current Phrase: {props.game.current}</div>
+      <br></br>
       <div>
         <table>
           <thead>
             <tr>
-              <td>Found Phrases</td>
+              <td>Found Phrases:</td>
             </tr>
           </thead>
           <tbody>
@@ -124,8 +133,42 @@ const Game = (props) => {
             })}
           </tbody>
         </table>
+        <br></br>
+        {props.game.lives > 0 ? (
+          <table>
+            <thead>
+              <tr>
+                <td>Incorrect Guesses:</td>
+              </tr>
+            </thead>
+            <tbody>
+              {props.game.wrongWords.map((phrase) => {
+                return (
+                  <tr>
+                    <td>{phrase}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        ) : (
+          ""
+        )}
       </div>
-      <button onClick={handleReset}>Reset</button>
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <button onClick={handleReset}>リセット</button>
+              </td>
+              <td>
+                <button onClick={handleGiveUp}>諦める</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
