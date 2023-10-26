@@ -78,13 +78,13 @@ const Game = (props) => {
     <div>
       <div>
         <h2>
-          Size: {props.rows}x{props.cols}, Difficulty: {props.difficulty}
+          サイズ: {props.rows}x{props.cols}, 難易度: {props.difficulty}
         </h2>
       </div>
       <div>
         {props.lives >= 0 ? (
           <h2>
-            Current Lives: {props.game.lives}/{props.lives}
+            残機: {props.game.lives}/{props.lives}
           </h2>
         ) : (
           ""

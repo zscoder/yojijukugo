@@ -17,7 +17,7 @@ export const Endgame = (props) => {
     <div>
       <div>
         <h2>
-          Size: {props.rows}x{props.cols}, Difficulty: {props.difficulty}
+          サイズ: {props.rows}x{props.cols}, 難易度: {props.difficulty}
         </h2>
       </div>
       <h2>You {props.game.lives > 0 || props.game.lives < -10 ? "win" : "lose"}!</h2>
@@ -30,7 +30,7 @@ export const Endgame = (props) => {
       <div>
         {props.game.lives > 0 ? (
           <h2>
-            Lives remaining: {props.game.lives}/{props.lives}
+            残機: {props.game.lives}/{props.lives}
           </h2>
         ) : (
           ""

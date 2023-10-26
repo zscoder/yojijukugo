@@ -15,7 +15,7 @@ const MainMenu = (props) => {
 
   const checkDifficulty = (entry) => {
     let lvl = entry["Kanji Level"];
-    if (lvl == "常用") return 0;
+    if (lvl == "小学生") return 0;
     else if (lvl == "５級") return 1;
     else if (lvl == "４級") return 2;
     else if (lvl == "３級") return 3;
@@ -101,7 +101,7 @@ const MainMenu = (props) => {
   };
   return (
     <div className="settings">
-      <h3>Dimensions: </h3>
+      <h3>サイズ: </h3>
       <select id="settings-size" defaultValue="4x4" className="settings-select">
         <option value="2x4">2x4</option>
         <option value="3x4">3x4</option>
@@ -112,7 +112,7 @@ const MainMenu = (props) => {
         <option value="6x8">6x8</option>
         <option value="8x8">8x8</option>
       </select>
-      <h3>Difficulty: </h3>
+      <h3>難易度: </h3>
       <select id="settings-difficulty" defaultValue="0" className="settings-select">
         <option value="0">0</option>
         <option value="1">1</option>
@@ -121,7 +121,7 @@ const MainMenu = (props) => {
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
-      <h3>Lives: </h3>
+      <h3>残機: </h3>
       <select id="settings-lives" defaultValue="3" className="settings-select">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -137,7 +137,7 @@ const MainMenu = (props) => {
       </select>
       <br></br>
       <br></br>
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleSubmit}>ゲームを始める</button>
     </div>
   );
 };
