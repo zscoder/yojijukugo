@@ -27,7 +27,7 @@ const MainMenu = (props) => {
     else return -1;
   };
 
-  const initializeGame = (numRows, numCols, dif, lives) => {
+  const initializeGame = (numRows, numCols, dif, lives, hints) => {
     //var csv = require("csvtojson");
     //console.log(data.length);
     //console.log("Difficulty = " + dif);
@@ -61,6 +61,11 @@ const MainMenu = (props) => {
       buttonStates.push(staterow);
     }
     let currentLives = lives;
+    let currentHints = hints;
+    let blankanswerstate = [];
+    for (let i = 0; i < kanjiCount; i++) {
+      blankanswerstate.push("????");
+    }
     let gamejson = {
       kanjilist: kanjiList,
       wordlist: wordList,
@@ -71,6 +76,8 @@ const MainMenu = (props) => {
       currentWords: [],
       wrongWords: [],
       lives: currentLives,
+      hints: currentHints,
+      answerState: blankanswerstate,
     };
     //console.log(gamejson);
     props.setGame(gamejson);
@@ -82,20 +89,29 @@ const MainMenu = (props) => {
     let dimensions = document.getElementById("settings-size").value;
     let dif = document.getElementById("settings-difficulty").value;
     let lives = document.getElementById("settings-lives").value;
+    let hints = document.getElementById("settings-hints").value;
     const dimArray = dimensions.split("x");
     const numRows = dimArray[0];
     const numCols = dimArray[1];
     props.setRows(numRows);
     props.setCols(numCols);
     props.setDifficulty(dif);
+
     if (lives == "infinity") {
       props.setLives(-100);
       lives = -100;
     } else {
       props.setLives(parseInt(lives));
     }
+
+    if (hints == "infinity") {
+      props.setHints(hints);
+      hints = -100;
+    } else {
+      props.setHints(parseInt(hints));
+    }
     //initialize new game
-    initializeGame(numRows, numCols, dif, lives);
+    initializeGame(numRows, numCols, dif, lives, hints);
 
     navigate("/game");
   };
@@ -123,6 +139,21 @@ const MainMenu = (props) => {
       </select>
       <h3>残機: </h3>
       <select id="settings-lives" defaultValue="3" className="settings-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="infinity">∞</option>
+      </select>
+      <h3>ヒント: </h3>
+      <select id="settings-hints" defaultValue="3" className="settings-select">
+        <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>

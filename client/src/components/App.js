@@ -22,6 +22,8 @@ const App = () => {
   const [cols, setCols] = useState(4);
   const [difficulty, setDifficulty] = useState(1);
   const [lives, setLives] = useState(3);
+  const [hints, setHints] = useState(3);
+  const [hintCount, setHintCount] = useState(0);
   const [game, setGame] = useState(null);
   useEffect(() => {}, []);
 
@@ -37,12 +39,16 @@ const App = () => {
               cols={cols}
               difficulty={difficulty}
               lives={lives}
+              hints={hints}
+              hintCount={hintCount}
               game={game}
               setRows={setRows}
               setCols={setCols}
               setDifficulty={setDifficulty}
               setLives={setLives}
+              setHints={setHints}
               setGame={setGame}
+              setHintCount={setHintCount}
             />
           }
         />
@@ -54,12 +60,16 @@ const App = () => {
               cols={cols}
               difficulty={difficulty}
               lives={lives}
+              hints={hints}
+              hintCount={hintCount}
               game={game}
               setRows={setRows}
               setCols={setCols}
               setDifficulty={setDifficulty}
               setLives={setLives}
+              setHints={setHints}
               setGame={setGame}
+              setHintCount={setHintCount}
             />
           }
         />
@@ -72,10 +82,13 @@ const App = () => {
               difficulty={difficulty}
               lives={lives}
               game={game}
+              hintCount={hintCount}
               setRows={setRows}
               setCols={setCols}
               setDifficulty={setDifficulty}
               setLives={setLives}
+              setHints={setHints}
+              setHintCount={setHintCount}
               setGame={setGame}
             />
           }

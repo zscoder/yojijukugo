@@ -20,11 +20,12 @@ export const Endgame = (props) => {
           サイズ: {props.rows}x{props.cols}, 難易度: {props.difficulty}
         </h2>
       </div>
-      <h2>You {props.game.lives > 0 || props.game.lives < -10 ? "win" : "lose"}!</h2>
+      <h2>
+        あなたが {props.game.lives > 0 || props.game.lives < -10 ? "勝ちました" : "負けました"}!
+      </h2>
       <div>
         <h2>
-          Found phrases: {props.game.currentWords.length}/
-          {Math.round((props.rows * props.cols) / 4)}
+          スコア: {props.game.currentWords.length}/{Math.round((props.rows * props.cols) / 4)}
         </h2>
       </div>
       <div>
@@ -37,10 +38,13 @@ export const Endgame = (props) => {
         )}
       </div>
       <div>
+        <h2>使ったヒント: {props.hintCount}</h2>
+      </div>
+      <div>
         <table>
           <thead>
             <tr>
-              <td>Found Phrases:</td>
+              <td>見つけた四字熟語:</td>
             </tr>
           </thead>
           <tbody>

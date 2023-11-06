@@ -24,6 +24,46 @@ const Game = (props) => {
     props.setGame(newjson);
     navigate("/result");
   };
+  const getRandomInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+  const handleHint = () => {
+    //console.log("Triggered at " + row + " " + col);
+    let newjson = JSON.parse(JSON.stringify(props.game));
+    if (newjson["hints"] > 0) {
+      //if hints exist
+      //make a list of unused indices
+      let unusedIndices = [];
+      for (let i = 0; i < newjson["answerState"].length; i++) {
+        for (let j = 0; j < newjson["answerState"][i].length; j++) {
+          if (newjson["answerState"][i][j] == "?") {
+            unusedIndices.push([i, j]);
+          }
+        }
+      }
+      function setCharAt(str, index, chr) {
+        if (index > str.length - 1) return str;
+        return str.substring(0, index) + chr + str.substring(index + 1);
+      }
+
+      if (unusedIndices.length > 0) {
+        let id = getRandomInt(0, unusedIndices.length);
+        let i = unusedIndices[id][0];
+        let j = unusedIndices[id][1];
+        newjson["answerState"][i] = setCharAt(
+          newjson["answerState"][i],
+          j,
+          newjson["wordlist"][i][j]
+        );
+        newjson["hints"]--;
+      }
+      let curHintCount = props.hintCount;
+      props.setGame(newjson);
+      props.setHintCount(curHintCount + 1);
+    }
+  };
   const triggerLose = (hp) => {
     navigate("/result");
   };
@@ -41,6 +81,8 @@ const Game = (props) => {
       if (newjson["current"].length == 4) {
         //check if props.game.wordlist contains newjson["current"]
         if (props.game["wordlist"].includes(newjson["current"])) {
+          let id = props.game["wordlist"].findIndex((element) => element == newjson["current"]);
+          newjson["answerState"][id] = newjson["current"];
           for (const idx of newjson["currentList"]) {
             newjson["buttonstates"][idx[0]][idx[1]] = 100;
           }
@@ -90,6 +132,15 @@ const Game = (props) => {
           ""
         )}
       </div>
+      <div>
+        {props.hints > 0 ? (
+          <h2>
+            ヒント: {props.game.hints}/{props.hints}
+          </h2>
+        ) : (
+          ""
+        )}
+      </div>
       <table className="table-container">
         <tbody>
           {props.game.kanjilist.map((kanjirow) => {
@@ -115,12 +166,29 @@ const Game = (props) => {
         </tbody>
       </table>
       <div>Current Phrase: {props.game.current}</div>
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <button onClick={handleReset}>リセット</button>
+              </td>
+              <td>
+                <button onClick={handleHint}>ヒント</button>
+              </td>
+              <td>
+                <button onClick={handleGiveUp}>諦める</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <br></br>
       <div>
         <table>
           <thead>
             <tr>
-              <td>Found Phrases:</td>
+              <td>見つけた四字熟語:</td>
             </tr>
           </thead>
           <tbody>
@@ -133,6 +201,27 @@ const Game = (props) => {
             })}
           </tbody>
         </table>
+        <br></br>
+        {props.hints > 0 ? (
+          <table>
+            <thead>
+              <tr>
+                <td>ヒント:</td>
+              </tr>
+            </thead>
+            <tbody>
+              {props.game.answerState.map((phrase) => {
+                return (
+                  <tr>
+                    <td>{phrase}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        ) : (
+          ""
+        )}
         <br></br>
         {props.game.lives > 0 ? (
           <table>
@@ -154,20 +243,6 @@ const Game = (props) => {
         ) : (
           ""
         )}
-      </div>
-      <div>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <button onClick={handleReset}>リセット</button>
-              </td>
-              <td>
-                <button onClick={handleGiveUp}>諦める</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   );
