@@ -15,31 +15,40 @@ export const Endgame = (props) => {
 
   return (
     <div>
-      <div>
-        <h2>
-          サイズ: {props.rows}x{props.cols}, 難易度: {props.difficulty}
-        </h2>
-      </div>
-      <h2>
-        あなたが {props.game.lives > 0 || props.game.lives < -10 ? "勝ちました" : "負けました"}!
-      </h2>
-      <div>
-        <h2>
-          スコア: {props.game.currentWords.length}/{Math.round((props.rows * props.cols) / 4)}
-        </h2>
-      </div>
-      <div>
-        {props.game.lives > 0 ? (
+      <div className="results-display">
+        <div>
           <h2>
-            残機: {props.game.lives}/{props.lives}
+            サイズ: {props.rows}x{props.cols}
           </h2>
-        ) : (
-          ""
-        )}
+        </div>
+        <div>
+          <h2>難易度: {props.difficulty}</h2>
+        </div>
+        <div>
+          <h2>
+            スコア: {props.game.currentWords.length}/{Math.round((props.rows * props.cols) / 4)}
+          </h2>
+        </div>
+        <div>
+          <h2>ヒント: {props.hintCount}</h2>
+        </div>
+        <div>
+          {props.game.lives > 0 ? (
+            <h2>
+              残機: {props.game.lives}/{props.lives}
+            </h2>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
-      <div>
-        <h2>使ったヒント: {props.hintCount}</h2>
+
+      <div className="game-result">
+        <h2>
+          あなたが{props.game.lives > 0 || props.game.lives < -10 ? "勝ちました" : "負けました"}!
+        </h2>
       </div>
+
       <div>
         <table>
           <thead>

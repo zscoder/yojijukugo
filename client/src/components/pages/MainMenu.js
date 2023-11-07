@@ -116,59 +116,72 @@ const MainMenu = (props) => {
     navigate("/game");
   };
   return (
-    <div className="settings">
-      <h3>サイズ: </h3>
-      <select id="settings-size" defaultValue="4x4" className="settings-select">
-        <option value="2x4">2x4</option>
-        <option value="3x4">3x4</option>
-        <option value="4x4">4x4</option>
-        <option value="5x4">5x4</option>
-        <option value="6x4">6x4</option>
-        <option value="6x6">6x6</option>
-        <option value="6x8">6x8</option>
-        <option value="8x8">8x8</option>
-      </select>
-      <h3>難易度: </h3>
-      <select id="settings-difficulty" defaultValue="0" className="settings-select">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-      <h3>残機: </h3>
-      <select id="settings-lives" defaultValue="3" className="settings-select">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="infinity">∞</option>
-      </select>
-      <h3>ヒント: </h3>
-      <select id="settings-hints" defaultValue="3" className="settings-select">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="infinity">∞</option>
-      </select>
-      <br></br>
-      <br></br>
-      <button onClick={handleSubmit}>ゲームを始める</button>
+    <div className="page">
+      <div className="title">四字熟語ゲーム</div>
+      <div className="settings">
+        <div className="mainmenu-option-text">サイズ:</div>
+        <div>
+          <select id="settings-size" defaultValue="4x4" className="settings-select">
+            <option value="2x4">2x4</option>
+            <option value="3x4">3x4</option>
+            <option value="4x4">4x4</option>
+            <option value="5x4">5x4</option>
+            <option value="6x4">6x4</option>
+            <option value="6x6">6x6</option>
+            <option value="6x8">6x8</option>
+            <option value="8x8">8x8</option>
+          </select>
+        </div>
+        <div className="mainmenu-option-text">難易度:</div>
+        <div>
+          <select id="settings-difficulty" defaultValue="0" className="settings-select">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div className="mainmenu-option-text">残機:</div>
+        <div>
+          <select id="settings-lives" defaultValue="3" className="settings-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="infinity">∞</option>
+          </select>
+        </div>
+        <div className="mainmenu-option-text">ヒント:</div>
+        <div>
+          <select id="settings-hints" defaultValue="3" className="settings-select">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="infinity">∞</option>
+          </select>
+        </div>
+      </div>
+      <div className="start-button-container">
+        <button onClick={handleSubmit} className="start-button">
+          ゲームを始める
+        </button>
+      </div>
     </div>
   );
 };

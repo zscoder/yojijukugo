@@ -1,1 +1,36 @@
 /* Fill me in :) */
+.settings-display {
+    display: grid;
+    grid-template-columns: 150px 150px 150px 150px; 
+    justify-items: center;
+}
+
+.game-grid{
+    margin:auto;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    border:none;
+}
+
+.current-phrase{
+    margin:auto;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.button-tray{
+    margin:auto;
+    text-align:center;
+    padding-bottom: 15px;
+    display: grid;
+    max-width: 300px;
+    grid-template-columns: 33% 33% 33%;
+}
+
+.found-list{
+margin:auto;
+    text-align:center;
+    display: grid;
+    /*max-width: 300px;*/
+    grid-template-columns: 33% 33% 33%;
+}

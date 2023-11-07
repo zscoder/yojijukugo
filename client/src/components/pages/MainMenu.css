@@ -1,0 +1,21 @@
+.title {
+    text-align: center;
+    font-size: xx-large;
+}
+
+.settings {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 100px 100px; 
+    justify-items: center;
+}
+
+.start-button-container{
+    margin: auto;
+    padding-top: 10px;
+}
+
+.start-button{
+    margin: auto;
+    margin-left: 20%;
+}

@@ -8,7 +8,7 @@ import MainMenu from "./pages/MainMenu.js";
 import Game from "./pages/Game.js";
 import Endgame from "./pages/Endgame.js";
 import "../utilities.css";
-
+import "./App.css";
 import { socket } from "../client-socket.js";
 
 import { get, post } from "../utilities";
@@ -29,7 +29,7 @@ const App = () => {
 
   return (
     //<NavBar/>
-    <div>
+    <div className="App-container">
       <Routes>
         <Route
           index

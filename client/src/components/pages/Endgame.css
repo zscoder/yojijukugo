@@ -1,3 +1,15 @@
 table, th, td {
-    border: 1px solid black;
+    border: 0.5px solid black;
+}
+
+.results-display {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%; 
+    justify-items: center;
+    text-align: center;
+}
+
+.game-result {
+    margin: auto;
+    text-align: center;
 }

@@ -1,0 +1,8 @@
+.App-container {
+    width: var(--container-width);
+    padding: var(--m) var(--m);
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    /*background-color: yellowgreen;*/
+  }

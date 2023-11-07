@@ -118,30 +118,36 @@ const Game = (props) => {
   };
   return (
     <div>
-      <div>
-        <h2>
-          サイズ: {props.rows}x{props.cols}, 難易度: {props.difficulty}
-        </h2>
-      </div>
-      <div>
-        {props.lives >= 0 ? (
+      <div className="settings-display">
+        <div>
           <h2>
-            残機: {props.game.lives}/{props.lives}
+            サイズ: {props.rows}x{props.cols}
           </h2>
-        ) : (
-          ""
-        )}
+        </div>
+        <div>
+          <h2>難易度: {props.difficulty}</h2>
+        </div>
+        <div>
+          {props.lives >= 0 ? (
+            <h2>
+              残機: {props.game.lives}/{props.lives}
+            </h2>
+          ) : (
+            ""
+          )}
+        </div>
+        <div>
+          {props.hints > 0 ? (
+            <h2>
+              ヒント: {props.game.hints}/{props.hints}
+            </h2>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
-      <div>
-        {props.hints > 0 ? (
-          <h2>
-            ヒント: {props.game.hints}/{props.hints}
-          </h2>
-        ) : (
-          ""
-        )}
-      </div>
-      <table className="table-container">
+
+      <table className="game-grid">
         <tbody>
           {props.game.kanjilist.map((kanjirow) => {
             //console.log(kanjirow);
@@ -165,84 +171,82 @@ const Game = (props) => {
           })}
         </tbody>
       </table>
-      <div>Current Phrase: {props.game.current}</div>
-      <div>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <button onClick={handleReset}>リセット</button>
-              </td>
-              <td>
-                <button onClick={handleHint}>ヒント</button>
-              </td>
-              <td>
-                <button onClick={handleGiveUp}>諦める</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+
+      <div className="current-phrase">Current Phrase: {props.game.current}</div>
+      <div className="button-tray">
+        <div>
+          <button onClick={handleReset}>リセット</button>
+        </div>
+        <div>
+          <button onClick={handleHint}>ヒント</button>
+        </div>
+        <div>
+          <button onClick={handleGiveUp}>諦める</button>
+        </div>
       </div>
-      <br></br>
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <td>見つけた四字熟語:</td>
-            </tr>
-          </thead>
-          <tbody>
-            {props.game.currentWords.map((phrase) => {
-              return (
+      <div className="found-list">
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <td>見つけた四字熟語:</td>
+              </tr>
+            </thead>
+            <tbody>
+              {props.game.currentWords.map((phrase) => {
+                return (
+                  <tr>
+                    <td>{phrase}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <div>
+          {props.hints > 0 ? (
+            <table className="hint-table">
+              <thead>
                 <tr>
-                  <td>{phrase}</td>
+                  <td>ヒント:</td>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <br></br>
-        {props.hints > 0 ? (
-          <table>
-            <thead>
-              <tr>
-                <td>ヒント:</td>
-              </tr>
-            </thead>
-            <tbody>
-              {props.game.answerState.map((phrase) => {
-                return (
-                  <tr>
-                    <td>{phrase}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        ) : (
-          ""
-        )}
-        <br></br>
-        {props.game.lives > 0 ? (
-          <table>
-            <thead>
-              <tr>
-                <td>Incorrect Guesses:</td>
-              </tr>
-            </thead>
-            <tbody>
-              {props.game.wrongWords.map((phrase) => {
-                return (
-                  <tr>
-                    <td>{phrase}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        ) : (
-          ""
-        )}
+              </thead>
+              <tbody>
+                {props.game.answerState.map((phrase) => {
+                  return (
+                    <tr>
+                      <td>{phrase}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          ) : (
+            ""
+          )}
+        </div>
+        <div>
+          {props.game.lives > 0 ? (
+            <table>
+              <thead>
+                <tr>
+                  <td>Incorrect Guesses:</td>
+                </tr>
+              </thead>
+              <tbody>
+                {props.game.wrongWords.map((phrase) => {
+                  return (
+                    <tr>
+                      <td>{phrase}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </div>
   );
