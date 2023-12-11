@@ -10,12 +10,11 @@
     justify-items: center;
 }
 
-.start-button-container{
+.button-container{
     margin: auto;
     padding-top: 10px;
 }
 
-.start-button{
+.button{
     margin: auto;
-    margin-left: 20%;
 }

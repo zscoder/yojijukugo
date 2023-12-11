@@ -38,7 +38,7 @@ const Game = (props) => {
       let unusedIndices = [];
       for (let i = 0; i < newjson["answerState"].length; i++) {
         for (let j = 0; j < newjson["answerState"][i].length; j++) {
-          if (newjson["answerState"][i][j] == "?") {
+          if (newjson["answerState"][i][j] == "？") {
             unusedIndices.push([i, j]);
           }
         }
@@ -230,7 +230,7 @@ const Game = (props) => {
             <table>
               <thead>
                 <tr>
-                  <td>Incorrect Guesses:</td>
+                  <td>間違ったフレーズ:</td>
                 </tr>
               </thead>
               <tbody>

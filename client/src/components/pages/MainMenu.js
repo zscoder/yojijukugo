@@ -64,7 +64,7 @@ const MainMenu = (props) => {
     let currentHints = hints;
     let blankanswerstate = [];
     for (let i = 0; i < kanjiCount; i++) {
-      blankanswerstate.push("????");
+      blankanswerstate.push("？？？？");
     }
     let gamejson = {
       kanjilist: kanjiList,
@@ -96,6 +96,7 @@ const MainMenu = (props) => {
     props.setRows(numRows);
     props.setCols(numCols);
     props.setDifficulty(dif);
+    props.setHintCount(0);
 
     if (lives == "infinity") {
       props.setLives(-100);
@@ -115,6 +116,11 @@ const MainMenu = (props) => {
 
     navigate("/game");
   };
+
+  const handleGuide = () => {
+    navigate("/guide");
+  };
+
   return (
     <div className="page">
       <div className="title">四字熟語ゲーム</div>
@@ -177,8 +183,8 @@ const MainMenu = (props) => {
           </select>
         </div>
       </div>
-      <div className="start-button-container">
-        <button onClick={handleSubmit} className="start-button">
+      <div className="button-container">
+        <button onClick={handleSubmit} className="button">
           ゲームを始める
         </button>
       </div>

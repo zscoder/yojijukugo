@@ -1,5 +1,6 @@
 table, th, td {
     border: 0.5px solid black;
+    
 }
 
 .results-display {
@@ -12,4 +13,22 @@ table, th, td {
 .game-result {
     margin: auto;
     text-align: center;
+}
+
+.table-container{
+    margin: auto;
+}
+
+.center-table-container{
+    margin: auto;
+    text-align: center;
+}
+
+
+.endgame-button-container{
+    margin: auto;
+}
+
+.button{
+    margin: auto;
 }

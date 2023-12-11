@@ -6,6 +6,7 @@ import jwt_decode from "jwt-decode";
 import NotFound from "./pages/NotFound.js";
 import MainMenu from "./pages/MainMenu.js";
 import Game from "./pages/Game.js";
+import Tutorial from "./pages/Tutorial.js";
 import Endgame from "./pages/Endgame.js";
 import "../utilities.css";
 import "./App.css";
@@ -29,6 +30,7 @@ const App = () => {
 
   return (
     //<NavBar/>
+    //<Route path="guide" element={<Tutorial />} />
     <div className="App-container">
       <Routes>
         <Route

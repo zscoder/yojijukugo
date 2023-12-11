@@ -45,12 +45,13 @@ export const Endgame = (props) => {
 
       <div className="game-result">
         <h2>
-          あなたが{props.game.lives > 0 || props.game.lives < -10 ? "勝ちました" : "負けました"}!
+          {props.game.lives > 0 || props.game.lives < -10 ? "あなたが勝ちました" : "ゲームオーバー"}
+          !
         </h2>
       </div>
 
       <div>
-        <table>
+        <table className="center-table-container">
           <thead>
             <tr>
               <td>見つけた四字熟語:</td>
@@ -89,7 +90,10 @@ export const Endgame = (props) => {
           })}
         </tbody>
       </table>
-      <button onClick={handleRetry}>もう一回遊ぶ</button>
+      <br></br>
+      <button className="endgame-button-container" onClick={handleRetry}>
+        もう一回遊ぶ
+      </button>
     </div>
   );
 };
